@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".deviceList">
+
+    <ImageView
+        android:id="@+id/pairedDevices"
+        android:layout_width="145dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="43dp"
+        android:contentDescription="@android:string/copy"
+        android:src="@drawable/paireddevices" />
+
+    <ImageView
+        android:id="@+id/profIcon"
+        android:layout_width="74dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="21dp"
+        android:contentDescription="@android:string/dialog_alert_title"
+        android:src="@drawable/profileicon" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="468dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="40dp"/>
+
+</RelativeLayout>

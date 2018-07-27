@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".homeScreen">
+
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="207dp"
+        android:layout_height="132dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="131dp"
+        android:contentDescription="@string/profileicon"
+        android:src="@drawable/profileicon" />
+
+    <ImageView
+        android:id="@+id/connect"
+        android:layout_width="288dp"
+        android:layout_height="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="106dp"
+        android:contentDescription="@string/connect"
+        android:src="@drawable/connectmc" />
+
+    <ImageView
+        android:id="@+id/homewelcome"
+        android:layout_width="84dp"
+        android:layout_height="33dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@android:string/cancel"
+        android:src="@drawable/welcome" />
+
+    <ImageView
+        android:id="@+id/profileName"
+        android:layout_width="146dp"
+        android:layout_height="61dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/shanjinur" />
+
+</RelativeLayout>
