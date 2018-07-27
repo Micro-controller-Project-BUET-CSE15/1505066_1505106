@@ -8,12 +8,13 @@
     tools:context=".sensorData">
 
     <ImageView
-        android:id="@+id/pairedDevices"
+        android:id="@+id/logout"
         android:layout_width="103dp"
         android:layout_height="58dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="26dp"
+        android:clickable="true"
         android:contentDescription="@android:string/copy"
         android:src="@drawable/profileicon" />
 
@@ -47,6 +48,7 @@
                     android:layout_height="25pt" />
 
                 <TextView
+                    android:id="@+id/sound_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sound : "
@@ -59,6 +61,7 @@
                     android:layout_height="10pt" />
 
                 <TextView
+                    android:id="@+id/temp_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Temperature : "
@@ -71,6 +74,7 @@
                     android:layout_height="10pt" />
 
                 <Button
+                    android:id="@+id/check_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15pt"
@@ -81,7 +85,7 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/listView"
+                android:id="@android:id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20pt">

@@ -9,8 +9,11 @@ import android.view.MenuItem;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -18,16 +21,22 @@ import android.bluetooth.BluetoothDevice;
 import android.os.AsyncTask;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class sensorData extends ListActivity {
 
-    Button Check,Discnt ;
+    Button Check ;
+    TextView sound,temp ;
+    ImageView Discnt ;
     String address = null;
+    ArrayAdapter<String> adapter;
     private ProgressDialog progress;
+    ArrayList<String> list ;
     BluetoothAdapter myBluetooth = null;
     BluetoothSocket btSocket = null;
     private boolean isBtConnected = false;
+
     //SPP UUID. Look for it
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -36,6 +45,10 @@ public class sensorData extends ListActivity {
     {
         super.onCreate(savedInstanceState);
 
+        list = new ArrayList<String>();
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+
         Intent newint = getIntent();
         address = newint.getStringExtra(deviceList.EXTRA_ADDRESS); //receive the address of the bluetooth device
 
@@ -43,6 +56,11 @@ public class sensorData extends ListActivity {
         setContentView(R.layout.activity_sensor_data);
 
         //call the widgets
+        Check = findViewById(R.id.check_button) ;
+        Discnt = findViewById(R.id.logout) ;
+        temp = findViewById(R.id.temp_data) ;
+        sound = findViewById(R.id.sound_data) ;
+
 
         new ConnectBT().execute(); //Call the class to connect
 
@@ -52,7 +70,9 @@ public class sensorData extends ListActivity {
             @Override
             public void onClick(View v)
             {
-                turnOnLed();      //method to turn on
+                checkValues();      //method to turn on
+                list.add(sound.getText().toString() + "\n" + temp.getText().toString());
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -65,6 +85,7 @@ public class sensorData extends ListActivity {
             }
         });
 
+        setListAdapter(adapter);
 
     }
 
@@ -83,13 +104,20 @@ public class sensorData extends ListActivity {
 
     }
 
-    private void turnOnLed()
+    private void checkValues()
     {
         if (btSocket!=null)
         {
             try
             {
                 btSocket.getOutputStream().write("1".toString().getBytes());
+                int tem = btSocket.getInputStream().read() ;
+                btSocket.getOutputStream().write("3".toString().getBytes()) ;
+                int soun = btSocket.getInputStream().read() ;
+                CharSequence t = "Temperature :" + String.valueOf(tem) + " C" ;
+                CharSequence s = "Sound :" + String.valueOf(soun) + " dB" ;
+                this.temp.setText(t);
+                this.sound.setText(s);
             }
             catch (IOException e)
             {
